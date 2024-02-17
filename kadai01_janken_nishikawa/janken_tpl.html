@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css" />
+    <title>じゃんけん</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>じゃんけん</h1>
+    </header>
+
+    <main>
+      <ul>
+        <li id="rock">グー</li>
+        <li id="scissors">チョキ</li>
+        <li id="paper">パー</li>
+      </ul>
+      <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+      <div id="judgment">勝負！</div>
+    </main>
+
+    <footer></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      function janken (usersHand) {
+        // console.log('janken called,  usersHand is' + usersHand);
+        let view = "";
+        let pcHand = Math.ceil(Math.random() * 3);
+        // console.log('pcHand is ' + pcHand);
+      if (pcHand == 1) {
+        view = "グー";
+        if(usersHand == 'rock') {
+            $('#judgment').html('あいこです');
+        } else if(usersHand == 'scissors') {
+            $('#judgment').html('あなたの負け');
+        } else if(usersHand == 'paper') {
+            $('#judgment').html('あなたの勝ち');
+        }
+      } else if (pcHand == 2) {
+        view = "チョキ";
+        if(usersHand == 'rock') {
+            $('#judgment').html('あなたの勝ち');
+        } else if(usersHand == 'scissors') {
+            $('#judgment').html('あいこです');
+        } else if(usersHand == 'paper') {
+            $('#judgment').html('あなたの負け');
+        }
+      } else if (pcHand == 3) {
+        view = "パー";
+        if(usersHand == 'rock') {
+            $('#judgment').html('あなたの負け');
+        } else if(usersHand == 'scissors') {
+            $('#judgment').html('あなたの勝ち');
+        } else if(usersHand == 'paper') {
+            $('#judgment').html('あいこです');
+        }
+      }
+      $("#pc_hands").html(view);
+      }
+      $("#rock").on("click", function () {
+        janken('rock');
+      });
+      $("#scissors").on("click", function () {
+        janken('scissors');
+      });
+      $("#paper").on("click", function () {
+        janken('paper');
+      });
+    </script>
+  </body>
+</html>
